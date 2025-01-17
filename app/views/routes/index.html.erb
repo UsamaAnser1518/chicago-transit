@@ -1,0 +1,22 @@
+<div class="flex justify-center my-4">
+  <%= link_to 'View Stops', stops_path, class: 'px-4 py-2 bg-blue-500 text-white rounded w-[230px] flex justify-center' %>
+</div>
+<h1 class="text-2xl font-bold text-center my-6">Longest Bus Routes</h1>
+<div class="overflow-x-auto">
+  <table class="w-full table-auto shadow-md rounded-lg">
+    <thead class="bg-gray-700 text-white">
+      <tr>
+        <th class="px-4 py-2 text-center">Route ID</th>
+        <th class="px-4 py-2 text-center">Number of Stops</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white">
+      <% @longest_routes.each do |route| %>
+      <tr class="border-b">
+        <td class="px-4 py-2 text-center"><%= route.route_id %></td>
+        <td class="px-4 py-2 text-center"><%= route.stops_count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,55 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="max-w-md w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div>
+      <%= link_to 'View Routes', routes_path, class: 'px-4 py-2 bg-blue-500 text-white rounded mx-4 my-4 flex justify-center' %>
+    </div>
+    <h1 class="text-xl font-bold text-center mb-6">Stop with the Most Routes</h1>
+    <% if @stop_with_most_routes %>
+      <div class="mb-4">
+          <p class="text-sm font-semibold">Stop ID: <span class="text-normal"><%= @stop_with_most_routes.id %></span></p>
+      </div>
+      <div class="mb-4">
+          <p class="text-sm font-semibold">On Street: <span class="text-normal"><%= @stop_with_most_routes.on_street %></span></p>
+      </div>
+      <div class="mb-4">
+          <p class="text-sm font-semibold">Cross Street: <span class="text-normal"><%= @stop_with_most_routes.cross_street %></span></p>
+      </div>
+      <div class="mb-4">
+          <p class="text-sm font-semibold">Number of Routes: <span class="text-normal"><%= @stop_with_most_routes.routes_count %></span></p>
+      </div>
+      <div class="mb-4">
+          <canvas id="routesChart" width="400" height="400"></canvas>
+      </div>
+    <% else %>
+        <p class="text-center text-sm text-gray-600">No data available.</p>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('routesChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar', // or 'line', 'pie', etc.
+        data: {
+            labels: ['Stop with Most Routes'],
+            datasets: [{
+                label: 'Number of Routes',
+                data: [<%= @stop_with_most_routes.routes_count %>],
+                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(54, 162, 235, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+  });
+</script>
+
+

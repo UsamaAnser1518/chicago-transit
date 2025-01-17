@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stop_id: MyString
+  on_street: MyString
+  cross_street: MyString
+  boardings: 1.5
+  alightings: 1.5
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  stop_id: MyString
+  on_street: MyString
+  cross_street: MyString
+  boardings: 1.5
+  alightings: 1.5
+  latitude: 1.5
+  longitude: 1.5
